@@ -40,23 +40,6 @@ void rot_encode(char* text, int rot) {
 */
 // decode the given text in the specified rot
 void rot_decode(char* text, int rot) {
-	for(int i=0;i<strlen(text);i++) {
-		int found = 0, c = tolower(text[i]);
-		for(int x=0;x<26;x++) {
-			if(tolower(text[i]) == alphabet[x]) {
-				for(int j=0;j<rot;j++) {
-					x--;
-					if(x < 0) {
-						x = 25;
-					}
-				}
-				(isupper(text[i])) ? printf("%c", toupper(alphabet[x])) : printf("%c", alphabet[x]);
-				found = 1;
-				break;
-			}
-		}
-		if(!found) { printf("%c", text[i]); }
-	}
-	printf("\n");
+	rot_encode(text, rot);
 }
 #endif
