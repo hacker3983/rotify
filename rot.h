@@ -14,12 +14,13 @@ void rot_encode(char* text, int rot) {
 		int found = 0, c = tolower(text[i]);
 		for(int x=0;x<26;x++) {
 			if(tolower(text[i]) == alphabet[x]) {
-				for(int j=0;j<rot;j++) {
+				/*for(int j=0;j<rot;j++) {
 					x++;
 					if(x > 25) {
 						x = 0;
 					}
-				}
+				}*/
+				x += rot; if(x > 25) x = (x-1) % 25;
 				(isupper(text[i])) ? printf("%c", toupper(alphabet[x])) : printf("%c", alphabet[x]);
 				found = 1;
 				break;
@@ -37,8 +38,7 @@ void rot_encode(char* text, int rot) {
    if while subtracting by 1 the difference is less than 0
    just set d(difference) to 25
 */
-//   decode the given text in the specified rot
-
+// decode the given text in the specified rot
 void rot_decode(char* text, int rot) {
 	for(int i=0;i<strlen(text);i++) {
 		int found = 0, c = tolower(text[i]);
